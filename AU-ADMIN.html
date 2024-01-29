@@ -9,6 +9,7 @@
     body {
       font-family: Garamond, serif;
       background-color: white;
+      color:#d13838;
     }
 
     .button {
@@ -32,6 +33,48 @@
       background-color: #7a1212;
       color: white;
     }
+
+    .button2 {
+      background-color: #d13838;
+    }
+
+    .button2:hover {
+      background-color: #7a1212;
+      color: white;
+    }
+
+    .button3 {
+      background-color:#d13838;
+      font-size: 15px;
+      padding: 5px 10px;
+
+    }
+
+    .button3:hover {
+      background-color: #7a1212;
+      color: white;
+    }
+
+    input[type=text],
+    input[type=password]{
+            width: 100%;
+            margin: auto;
+            padding: 5px 10px;
+            display: block;
+            border: 2px solid #404999;
+            box-sizing: border-box;
+            color: #4b4b4b;
+        }
+
+      .box {
+      background-color: white;
+      width: 25%;
+      border: 3px solid #404999;
+      border-radius: 5%;
+      padding: 30px;
+      margin: auto;
+    }
+
 
     .flex {
       display: flex
@@ -67,25 +110,29 @@
     <button class="button button1" id="addBookBtn">ADD BOOKS</button>
   </div>
 
-
+  <div class="box" id="Boxfrm">
   <form action="" class="flex  flex-col items-center hidden" id="addBookFrm">
-    <button id="closeBtn">X</button>
+    <button class="button button3" id="closeBtn">X</button>
     <div class="flex flex-col w-42">
       <label for="title">Title:</label>
-      <input type="text" name="title" id="title">
+      <input type="text" name="title" id="title" placeholder="Title of the Book here">
       <label for="author">Author:</label>
-      <input type="text" name="author" id="author">
+      <input type="text" name="author" id="author" placeholder="Author of the Book here">
       <label for="image">Image Link:</label>
-      <input type="text" name="image" id="imageLink">
+      <input type="text" name="image" id="imageLink" placeholder="Link of the Image of the Book here">
     </div>
-    <button type="submit" id="addFrmSbmt">Submit</button>
+    <br>
+    <button class="button button2" type="submit" id="addFrmSbmt">Submit</button>
+  </br>
   </form>
+</div>
 
+  <br>
   <div id="bookContainer">
-
   </div>
+  </br>
 
-  <script src="/js/script.js"></script>
+  <script src="./js/script.js"></script>
 </body>
 
 </html>
