@@ -1,5 +1,3 @@
-
-
 const username = "admin"
 const password = "admin"
 
@@ -12,6 +10,8 @@ const passwordEl = document.getElementById("password")
 
 
 const addBookBtn = document.getElementById("addBookBtn")
+
+const Boxfrm = document.getElementById("Boxfrm")
 
 if (submitButton) {
     submitButton.addEventListener('click', (e) => {
@@ -32,6 +32,7 @@ if (closeBtn) {
         e.preventDefault()
         const addBookFrm = document.getElementById("addBookFrm")
         addBookFrm.style.display = "none"
+        Boxfrm.style.display = "none"
     })
 }
 
@@ -39,11 +40,9 @@ if (addBookBtn) {
     addBookBtn.addEventListener("click", () => {
         const addBookFrm = document.getElementById("addBookFrm")
         addBookFrm.style.display = "block"
+        Boxfrm.style.display = "block"
     })
 }
-
-
-
 
 const books = localStorage.getItem("books") ? JSON.parse(localStorage.getItem("books")) : []
 
@@ -73,6 +72,7 @@ function deleteItemFromStorage(id) {
 }
 
 
+
 const bookContainer = document.getElementById("bookContainer")
 function getItemFromStorage() {
 
@@ -81,17 +81,25 @@ function getItemFromStorage() {
     let booksElement = ""
     allBooks.map(({ title, author, index, image }) => {
         console.log(index)
-        booksElement += `<div id='book-${index}'>
-        <img src='${image}' width="200" height="200"/>
-        <span>Title: ${title}</span>
+        booksElement += ` <br>
+        <div style="background-color:white; width:260px; border:3px solid #404999; border-radius:5%; padding:15px; text-align:center;">
+        <div id='book-${index}'>
+        <span style = "font-size:18.0pt; font-style:bold; color:#404999; text-align:center;">"${title}"</span>
         <span id="itemName"></span>
         </div>
+        <div id='book-${index}'>
+        <img src='${image}' width="200" height="200"/>
+        </div>
         <div>
-            <span>Author: </span>
-            <span id="price"> ${author}</span>
+        <span style = "font-size:18.0pt; font-style:oblique; color:#404999; text-align:center;" id="price">${author}</span>
         </div>
         
-        <button onClick="deleteItemFromStorage(${index})">Delete</button>
+        <button style = "background-color:#d13838; font-size:15px; padding:5px 10px; color:white; text-align:center;" "onClick="deleteItemFromStorage(${index})">Delete</button>
+        <div>
+        <span style = "font-size:2px; font-style:oblique; color:white;">teehee</span>
+        </div>
+        </div>
+        </br>
     `
     })
     bookContainer.innerHTML = booksElement
@@ -101,9 +109,6 @@ function getItemFromStorage() {
 const stPageLibrary = document.getElementById("stPageLibrary");
 
 const library = localStorage.getItem("library") ? JSON.parse(localStorage.getItem("library")) : []
-
-
-
 
 
 function addItemToPersonal({ title, author, image, index }) {
@@ -123,17 +128,25 @@ function showItemOnStudent() {
     let booksElement = ""
     allBooks.map(({ title, author, index, image }) => {
         console.log(index)
-        booksElement += `<div id='book-${index}'>
+        booksElement += ` <br>
+        <div style="background-color:white; width:260px; border:3px solid #d13838; border-radius:5%; padding:15px; text-align:center;">
+        <div id='book-${index}'>
+        <span style = "font-size:18.0pt; font-style:bold; color:#d13838; font-family: Garamond, serif; text-align:center;">"${title}"</span>
+        <span  style = "font-size:18.0pt; font-style:bold; color:#d13838; font-family: Garamond, serif; text-align:center;" id="itemName"></span>
+        </div>
+        <div id='book-${index}'>
         <img src='${image}' width="200" height="200"/>
-        <span>Title: ${title}</span>
-        <span id="itemName"></span>
         </div>
         <div>
-            <span>Author: </span>
-            <span id="price"> ${author}</span>
+            <span style = "font-size:18.0pt; font-style:oblique; color:#d13838; font-family: Garamond, serif; text-align:center;" id="price"> ${author}</span>
         </div>
-        
-        <button id="libraryAddItemBtn${index}" onClick="addItemToPersonal({title: '${title}',author:'${author}',image: '${image}', index: '${index}'})">Add to Library</button> 
+
+        <button  style = "background-color: #404999; font-size:15px; padding:5px 10px; color:white; font-family: Garamond, serif; text-align:center;" id="libraryAddItemBtn${index}" onClick="addItemToPersonal({title: '${title}',author:'${author}',image: '${image}', index: '${index}'})">Add to Library</button> 
+        <div>
+        <span style = "font-size:2px; font-style:oblique; color:white;">teehee</span>
+        </div>
+        </div>
+        </br>
     `
     })
     stPageLibrary.innerHTML = booksElement
@@ -162,17 +175,25 @@ function showPersonalLibrary() {
     let libraryElement = ""
     allLibrary.map(({ title, author, index, image }) => {
         console.log(index)
-        libraryElement += `<div id='book-${index}'>
+        libraryElement += `<br>
+        <div style="background-color:white; width:260px; border:3px solid #d13838; border-radius:5%; padding:15px; text-align:center;">
+        <div>
+        <span style = "font-size:18.0pt; font-style:bold; color:#d13838; font-family: Garamond, serif; text-align:center;">"${title}"</span>
+        <span style = "font-size:18.0pt; font-style:bold; color:#d13838; font-family: Garamond, serif; text-align:center;" id="itemName"></span>
+        </div>
+        <div id='book-${index}'>
         <img src='${image}' width="200" height="200"/>
-        <span>Title: ${title}</span>
-        <span id="itemName"></span>
         </div>
         <div>
-            <span>Author: </span>
-            <span id="price"> ${author}</span>
+            <span style = "font-size:18.0pt; font-style:oblique; color:#d13838; font-family: Garamond, serif; text-align:center;" id="price"> ${author}</span>
         </div>
         
-        <button id="libraryAddItemBtn${index}" onClick="deleteBookToPersonal({id: '${index}'})">Delete</button> 
+        <button  style = "background-color: #404999; font-size:15px; padding:5px 10px; color:white; font-family: Garamond, serif; text-align:center;" id="libraryAddItemBtn${index}" onClick="deleteBookToPersonal({id: '${index}'})">Delete</button>
+        <div>
+        <span style = "font-size:2px; font-style:oblique; color:white;">teehee</span>
+        </div>
+     </div>
+     </br>
     `
     })
     personalLibraryContainer.innerHTML = libraryElement
@@ -209,6 +230,10 @@ if (addFrmSbmt) {
         getItemFromStorage()
 
     })
+
+
+
+}
 
 
 
